@@ -66,11 +66,8 @@ public class Hero : MonoBehaviour {
         if (Input.GetAxis("Jump") == 1 && fireEvent != null)
         {
             fireEvent();
-            //TempFire();
         }
     }
-
-   // TempFire - deleted to defer firing to Weapon class
 
     private void OnTriggerEnter(Collider other)
     {

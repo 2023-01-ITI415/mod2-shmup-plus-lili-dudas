@@ -14,6 +14,8 @@ public class Main : MonoBehaviour {
     public float enemySpawnPerSecond = 0.5f; // # Enemies/second
     public float enemyInsetDefault = 1.5f; // Padding for position
     public float gameRestartDelay = 2;
+    public int counter = 0;
+
 
     public WeaponDefinition[] weaponDefinitions;
     public GameObject prefabPowerUp;
@@ -48,6 +50,8 @@ public class Main : MonoBehaviour {
             // Set it to the position of the destroyed ship
             pu.transform.position = e.transform.position;
         }
+        var ShipDestroyed = new SHIP_DESTROYED(Enemy e);
+        ShipDestroyed.counter += 1; //each time an enemy ship is destroyed, counter is increased
     }
 
     private void Awake()
@@ -75,9 +79,16 @@ public class Main : MonoBehaviour {
             return;
         }
 
-
         // Pick a random Enemy prefab to instantiate
-        int ndx = Random.Range(0, prefabEnemies.Length);
+        //int ndx = Random.Range(0, prefabEnemies.Length);
+        int ndx = 0;
+        if (counter < 16) {//makes it so enemies appear in order of prefabEnemies
+            ndx = prefabEnemies.Length - counter;
+        }
+        else {
+            counter = 0;
+        }
+
         GameObject go = Instantiate<GameObject>(prefabEnemies[ndx]);
 
         // Position the Enemy above the screen with a random x position

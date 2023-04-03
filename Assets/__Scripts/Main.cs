@@ -14,7 +14,7 @@ public class Main : MonoBehaviour {
     public float enemySpawnPerSecond = 0.5f; // # Enemies/second
     public float enemyInsetDefault = 1.5f; // Padding for position
     public float gameRestartDelay = 2;
-    public int counter = 0;
+    public static int counter = 0;
 
 
     public WeaponDefinition[] weaponDefinitions;
@@ -50,8 +50,7 @@ public class Main : MonoBehaviour {
             // Set it to the position of the destroyed ship
             pu.transform.position = e.transform.position;
         }
-        var ShipDestroyed = new SHIP_DESTROYED(Enemy e);
-        ShipDestroyed.counter += 1; //each time an enemy ship is destroyed, counter is increased
+        counter += 1; //each time an enemy ship is destroyed, counter is increased
     }
 
     private void Awake()

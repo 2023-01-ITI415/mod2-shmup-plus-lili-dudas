@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
+
 
 [RequireComponent(typeof(BoundsCheck))]
 public class Enemy : MonoBehaviour
@@ -50,8 +51,6 @@ public class Enemy : MonoBehaviour
         }
     }
 
-
-
     void Update()
     {
         Move();
@@ -91,7 +90,6 @@ public class Enemy : MonoBehaviour
                     {
                         calledShipDestroyed = true;
                         Main.SHIP_DESTROYED(this);
-                        Main.SetScoreText();
                     }
                     Destroy(this.gameObject);
                 }

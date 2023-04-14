@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 
 public class Main : MonoBehaviour {
@@ -16,11 +15,7 @@ public class Main : MonoBehaviour {
     public float enemySpawnPerSecond = 0.5f; // # Enemies/second
     public float enemyInsetDefault = 1.5f; // Padding for position
     public float gameRestartDelay = 2;
-    public static Text uitScore; // Text
     public static int counter = 0;
-
-    [Header("Dynamic")]
-    static public int txtScore;
 
 
     public WeaponDefinition[] weaponDefinitions;
@@ -32,11 +27,6 @@ public class Main : MonoBehaviour {
 
     private BoundsCheck bndCheck;
 
-    static void UpdateGUI()
-    {
-        //show the data in the GUITexts
-        uitScore.text = "Score: " + txtScore;
-    }
 
     /// <summary>
     /// Called by an Enemy ship whenever it is destroyed. It sometimes
@@ -45,8 +35,6 @@ public class Main : MonoBehaviour {
     /// <param name="e">The enemy that is destroyed</param>
     static public void SHIP_DESTROYED( Enemy e)
     {
-        txtScore += e.score;
-        UpdateGUI();
         // Potentially generate a PowerUp
         if (Random.value <= e.powerUpDropChance)
         {

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 [RequireComponent(typeof(BoundsCheck))]
 public class Enemy : MonoBehaviour
@@ -90,6 +91,7 @@ public class Enemy : MonoBehaviour
                     {
                         calledShipDestroyed = true;
                         Main.SHIP_DESTROYED(this);
+                        Main.SetScoreText();
                     }
                     Destroy(this.gameObject);
                 }
@@ -103,4 +105,5 @@ public class Enemy : MonoBehaviour
             print("Enemy hit by non-ProjectileHero: " + otherGO.name);
         }
     }
+
 }

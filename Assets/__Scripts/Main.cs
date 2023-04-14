@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Main : MonoBehaviour {
 
@@ -26,6 +27,9 @@ public class Main : MonoBehaviour {
 
     private BoundsCheck bndCheck;
 
+    public static TextMeshProUGUI countText;
+
+    public static float txtScore;
 
     /// <summary>
     /// Called by an Enemy ship whenever it is destroyed. It sometimes
@@ -51,6 +55,7 @@ public class Main : MonoBehaviour {
             pu.transform.position = e.transform.position;
         }
         counter += 1; //each time an enemy ship is destroyed, counter is increased
+        txtScore = e.health;
     }
 
     private void Awake()
@@ -83,7 +88,6 @@ public class Main : MonoBehaviour {
         int ndx = 0;
         if (counter < prefabEnemies.Length) {//makes it so enemies appear in order of prefabEnemies
             ndx = counter;
-            print(ndx);
         }
         else {
             counter = 0;
@@ -149,4 +153,9 @@ public class Main : MonoBehaviour {
         // which means it has failed to find the right WeaponDefinition
         return new WeaponDefinition();
     }
+
+    static public void SetScoreText()
+	{
+		countText.text = "Score: " + txtScore.ToString();
+	}
 }

@@ -82,7 +82,8 @@ public class Main : MonoBehaviour {
         //int ndx = Random.Range(0, prefabEnemies.Length);
         int ndx = 0;
         if (counter < 16) {//makes it so enemies appear in order of prefabEnemies
-            ndx = prefabEnemies.Length - counter;
+            ndx = counter;
+            print(ndx);
         }
         else {
             counter = 0;
